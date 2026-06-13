@@ -18,7 +18,6 @@
 # snippet.
 
 import argparse
-import datetime
 import glob
 import os
 import re
@@ -128,7 +127,7 @@ def file_passes(filename, refs, regexs):  # pylint: disable=too-many-locals
     # trim our file to the same number of lines as the reference file
     data = data[:len(ref)]
 
-    # Replace all occurrences of the regex "Copyright 2017 |Copyright " with "Copyright "
+    # Strip the optional 2014-2025 year from "Copyright <year> ..." down to "Copyright ..."
     when = regexs["date"]
     for idx, datum in enumerate(data):
         (data[idx], found) = when.subn('Copyright ', datum)
