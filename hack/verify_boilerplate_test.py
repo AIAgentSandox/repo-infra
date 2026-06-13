@@ -50,10 +50,6 @@ class TestBoilerplate(unittest.TestCase):
         verify_boilerplate.main()
 
     output = sys.stdout.getvalue()
-    # NOTE: generated.go is intentionally absent from this list. It is a
-    # generated file (see is_generated) with no copyright header and would
-    # fail the boilerplate check if generated files were not skipped. This
-    # guards against accidentally removing is_generated again.
     expected = '\n'.join(verify_boilerplate.nonconforming_lines([
         './fail.go',
         './fail.py',
